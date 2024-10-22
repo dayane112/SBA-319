@@ -1,7 +1,7 @@
 // import
 import mongoose from 'mongoose';
 
-const showSchema = new mongoose.Schema({
+const movieSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -9,16 +9,16 @@ const showSchema = new mongoose.Schema({
     },
     genre: {
         type: String,
-        required: true,
+        required: true
     },
     year: {
         type: Number,
         required: true
     },
-    seasons: {
+    minutes: {
         type: Number,
         required: true
     }
 });
 
-export default mongoose.model('Show', showSchema);
+export default mongoose.model('Movie', movieSchema);

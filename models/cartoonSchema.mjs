@@ -10,7 +10,6 @@ const cartoonSchema = new mongoose.Schema({
     genre: {
         type: String,
         required: true,
-        unique: true,
     },
     year: {
         type: Number,
