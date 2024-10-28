@@ -8,11 +8,11 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     try {
 
-        let movie = new Movie(req.body);
+        let newMovie = new Movie(req.body);
 
-        await movie.save();
+        await newMovie.save();
 
-        res.status(201).json(movie);
+        res.status(201).json(newMovie);
 
     } catch (err) {
         console.error(err);
@@ -24,9 +24,23 @@ router.post('/', async (req, res) => {
 // Read
 router.get('/', async (req, res) => {
     try {
-        let movies = await Movie.find({});
+        let allMovies = await Movie.find({});
 
-        res.json(movies);
+        res.json(allMovies);
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({msg: 'Server error'});
+    }
+});
+
+
+// Read by ID
+router.get('/:id', async (req, res) => {
+    try {
+        let movie = await Movie.findById(req.params.id);
+
+        res.json(movie);
 
     } catch (err) {
         console.error(err);

@@ -1,5 +1,5 @@
 import express from 'express';
-import Show from '../models/showSchema.mjs'
+import Cartoon from '../models/cartoonSchema.mjs';
 
 const router = express.Router();
 
@@ -8,16 +8,16 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     try {
 
-        let newShow = new Show(req.body);
+        let newCartoon = new Cartoon(req.body);
 
-        await newShow.save();
+        await newCartoon.save();
 
-        res.status(201).json(newShow);
+        res.status(201).json(newCartoon);
 
     } catch (err) {
         console.error(err);
         res.status(500).json({msg: 'Server error'});
-    };
+    }
 });
 
 
@@ -25,14 +25,14 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
 
-        let allShows = await Show.find({});
+        let allCartoons = await Cartoon.find({});
 
-        res.json(allShows);
+        res.json(allCartoons);
 
     } catch (err) {
         console.error(err);
         res.status(500).json({msg: 'Server error'});
-    };
+    }
 });
 
 
@@ -40,9 +40,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
 
-        let oneShow = await Show.findById(req.params.id);
+        let oneCartoon = await Cartoon.findById(req.params.id);
 
-        res.json(oneShow);
+        res.json(oneCartoon);
 
     } catch (err) {
         console.error(err);
@@ -51,35 +51,34 @@ router.get('/:id', async (req, res) => {
 });
 
 
-
 // Update
 router.patch('/:id', async (req, res) => {
     try {
 
-        let updatedShow = await Show.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        let updatedCartoon = await Cartoon.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
-        res.json(updatedShow);
+        res.json(updatedCartoon);
 
     } catch (err) {
-        rconsole.error(err);
+        console.error(err);
         res.status(500).json({msg: 'Server error'});
-    };
+    }
 });
 
 
 // Delete
 router.delete('/:id', async (req, res) => {
     try {
-       
-        let deleteShow = await Show.findByIdAndDelete(req.params.id);
 
-        res.json(deleteShow); 
+        let deleteCartoon = await Cartoon.findByIdAndDelete(req.params.id);
         
+        res.json(deleteCartoon);
+
     } catch (err) {
-        console.error(err)
-        res.status(500).json({msg: 'Server error'})
+        console.error(err);
+        res.status(500).json({msg: 'Server error'});
     }
-})
+});
 
 
 export default router;
