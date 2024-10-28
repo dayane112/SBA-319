@@ -21,4 +21,6 @@ const showSchema = new mongoose.Schema({
     }
 });
 
+showSchema.index({ year: 1 })
+
 export default mongoose.model('Show', showSchema);

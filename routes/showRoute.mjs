@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
 
         await newShow.save();
 
-        res.status(201).json(newShow);
+        res.status(200).json(newShow);
 
     } catch (err) {
         console.error(err);
@@ -49,7 +49,6 @@ router.get('/:id', async (req, res) => {
         res.status(500).json({msg: 'Server error'});
     }
 });
-
 
 
 // Update

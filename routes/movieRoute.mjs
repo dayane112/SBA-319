@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
 
         await newMovie.save();
 
-        res.status(201).json(newMovie);
+        res.status(200).json(newMovie);
 
     } catch (err) {
         console.error(err);
@@ -24,6 +24,7 @@ router.post('/', async (req, res) => {
 // Read
 router.get('/', async (req, res) => {
     try {
+
         let allMovies = await Movie.find({});
 
         res.json(allMovies);
@@ -38,9 +39,10 @@ router.get('/', async (req, res) => {
 // Read by ID
 router.get('/:id', async (req, res) => {
     try {
-        let movie = await Movie.findById(req.params.id);
+        
+        let oneMovie = await Movie.findById(req.params.id);
 
-        res.json(movie);
+        res.json(oneMovie);
 
     } catch (err) {
         console.error(err);

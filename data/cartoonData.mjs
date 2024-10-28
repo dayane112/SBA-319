@@ -48,16 +48,3 @@ export const cartoons = [
         seasons: 4
     },
 ]
-
-// router.get('/', (req, res) => {
-//     try {
-
-//         const allShow = Show.find({});
-
-//         res.json(allShow)
-        
-//     } catch (error) {
-//         console.error(err)
-//         res.status(500).json({msg: 'Server error'})
-//     }
-// })

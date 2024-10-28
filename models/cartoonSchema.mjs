@@ -21,4 +21,6 @@ const cartoonSchema = new mongoose.Schema({
     }
 });
 
+showSchema.index({ seasons: -1 })
+
 export default mongoose.model('Cartoon', cartoonSchema);

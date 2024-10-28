@@ -7,7 +7,7 @@ export const movies = [
     },
     {
         name: "The Addams Family",
-        genre: ["Comedy", "Horror"],
+        genre: ["Horror", "Comedy"],
         year: 1991,
         minutes: 99
     },

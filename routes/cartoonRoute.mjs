@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
 
         await newCartoon.save();
 
-        res.status(201).json(newCartoon);
+        res.status(200).json(newCartoon);
 
     } catch (err) {
         console.error(err);
