@@ -1,5 +1,5 @@
 import express from 'express';
-import Show from '../models/showSchema.mjs'
+import Movie from '../models/movieSchema.mjs';
 
 const router = express.Router();
 
@@ -8,31 +8,30 @@ const router = express.Router();
 router.post('/', async (req, res) => {
     try {
 
-        let show = new Show(req.body);
+        let movie = new Movie(req.body);
 
-        await show.save();
+        await movie.save();
 
-        res.status(201).json(show);
+        res.status(201).json(movie);
 
     } catch (err) {
         console.error(err);
         res.status(500).json({msg: 'Server error'});
-    };
+    }
 });
 
 
 // Read
 router.get('/', async (req, res) => {
     try {
+        let movies = await Movie.find({});
 
-        let shows = await Show.find({});
-
-        res.json(shows);
+        res.json(movies);
 
     } catch (err) {
         console.error(err);
         res.status(500).json({msg: 'Server error'});
-    };
+    }
 });
 
 
@@ -40,30 +39,30 @@ router.get('/', async (req, res) => {
 router.patch('/:id', async (req, res) => {
     try {
 
-        let updatedShow = await Show.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        let updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
-        res.json(updatedShow);
+        res.json(updatedMovie);
 
     } catch (err) {
-        rconsole.error(err);
+        console.error(err);
         res.status(500).json({msg: 'Server error'});
-    };
+    }
 });
 
 
 // Delete
 router.delete('/:id', async (req, res) => {
     try {
-       
-        let deleteShow = await Show.findByIdAndDelete(req.params.id);
 
-        res.json(deleteShow); 
-        
+        let deleteMovie = await Movie.findByIdAndDelete(req.params.id);
+
+        res.json(deleteMovie);
+
     } catch (err) {
-        console.error(err)
-        res.status(500).json({msg: 'Server error'})
+        console.error(err);
+        res.status(500).json({msg: 'Server error'});
     }
-})
+});
 
 
 export default router;
