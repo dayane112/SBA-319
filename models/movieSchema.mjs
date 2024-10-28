@@ -8,7 +8,7 @@ const movieSchema = new mongoose.Schema({
         unique: true,
     },
     genre: {
-        type: String,
+        type: [String],
         required: true
     },
     year: {
@@ -20,5 +20,7 @@ const movieSchema = new mongoose.Schema({
         required: true
     }
 });
+
+movieSchema.index({ genre: 1 })
 
 export default mongoose.model('Movie', movieSchema);

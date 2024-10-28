@@ -1,5 +1,11 @@
 export const movies = [
     {
+        name: "Ever After",
+        genre: ["Romance", "Comedy"],
+        year: 1998,
+        minutes: 121
+    },
+    {
         name: "The Addams Family",
         genre: ["Comedy", "Horror"],
         year: 1991,
